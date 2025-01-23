@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  DefaultValuePipe,
   Get,
   Headers,
   Ip,
@@ -8,26 +9,28 @@ import {
   ParseIntPipe,
   Post,
   Query,
+  ValidationPipe
 } from '@nestjs/common';
+import { CreateUserDto } from './dtos/create-user.dto';
 
 @Controller('users')
 export class UsersController {
-  @Get('/:id?')
-  public getUsers(@Param('id', ParseIntPipe) id: number | undefined, @Query() query: any) {
+  @Get('/:id')
+  public getUsers(
+    @Param('id', ParseIntPipe) id: number | undefined,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+  ) {
     console.log(id);
-    console.log(typeof id);
-    console.log(query);
+    console.log(limit);
+    console.log(page);
     return 'You just send a GET request to "/users" endpoint';
   }
   @Post()
   public createUsers(
-    @Body() param: any,
-    @Headers() headers: any,
-    @Ip() ip: any,
+    @Body(new ValidationPipe()) createUserDto: CreateUserDto,
   ) {
-    console.log(param);
-    console.log(headers);
-    console.log(ip);
+    console.log(createUserDto);
     return 'You just created an user via POST on "/users" endpoint';
   }
 }

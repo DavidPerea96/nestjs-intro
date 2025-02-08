@@ -5,7 +5,7 @@ import { PostServices } from './services/post.services';
 export class PostController {
   constructor(private readonly postServices: PostServices) {}
 
-  @Get('/:userId?')
+  @Get('/:userId')
   public getPosts(@Param('userId') userId: string) {
     return this.postServices.findAll(userId);
   }

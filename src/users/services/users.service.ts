@@ -1,5 +1,7 @@
+/* eslint-disable */
 import { Injectable } from '@nestjs/common';
 import { GetUsersParamDto } from '../dtos/get-users-param.dto';
+import { AuthService } from 'src/auth/services/auth.service';
 
 @Injectable()
 export class UsersService {
@@ -19,11 +21,16 @@ export class UsersService {
       },
     ];
   }
+  constructor(private readonly authService: AuthService) {}
   public getUserById(userId: string) {
-    return {
-      id: 1234,
-      fistName: 'Alice',
-      email: 'alice@doe.com',
-    };
+    if (!this.authService.isAuth()) {
+      throw new Error('User is not authenticated');
+    } else {
+      return {
+        id: 1234,
+        fistName: 'Alice',
+        email: 'alice@doe.com',
+      };
+    }
   }
 }

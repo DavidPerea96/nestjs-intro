@@ -15,7 +15,13 @@ async function bootstrap() {
   );
 
   //Swagger Configurations
-  const config = new DocumentBuilder().setVersion('1.0').build();
+  const config = new DocumentBuilder()
+    .setTitle('NestJS Introduction Course')
+    .setDescription('Introduction couse for NestJS')
+    .setTermsOfService('http://swagger.io/terms/')
+    .addServer('http://localhost:3000')
+    .setVersion('1.0')
+    .build();
   //Instantiate Document
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);

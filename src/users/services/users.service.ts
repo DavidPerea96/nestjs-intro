@@ -19,7 +19,7 @@ export class UsersService {
       },
     ];
   }
-  public getUserById(id: number) {
+  public getUserById(userId: string) {
     return {
       id: 1234,
       fistName: 'Alice',

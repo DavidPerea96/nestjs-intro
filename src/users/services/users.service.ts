@@ -1,5 +1,4 @@
-/* eslint-disable */
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, forwardRef } from '@nestjs/common';
 import { GetUsersParamDto } from '../dtos/get-users-param.dto';
 import { AuthService } from 'src/auth/services/auth.service';
 
@@ -21,7 +20,10 @@ export class UsersService {
       },
     ];
   }
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    @Inject(forwardRef(() => AuthService))
+    private readonly authService: AuthService
+  ) {}
   public getUserById(userId: string) {
     if (!this.authService.isAuth()) {
       throw new Error('User is not authenticated');

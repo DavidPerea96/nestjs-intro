@@ -1,6 +1,7 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { GetUsersParamDto } from '../dtos/get-users-param.dto';
 import { AuthService } from 'src/auth/services/auth.service';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 
 @Injectable()
 export class UsersService {

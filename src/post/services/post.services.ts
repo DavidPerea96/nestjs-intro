@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { UsersService } from 'src/users/services/users.service';
 
 @Injectable()
@@ -9,12 +10,12 @@ export class PostServices {
 
     return [
       {
-        user: user,
+        user: 1234,
         title: 'Post 1',
         content: 'This is post 1',
       },
       {
-        user: user,
+        user: 1234,
         title: 'Post 2',
         content: 'This is post 2',
       },

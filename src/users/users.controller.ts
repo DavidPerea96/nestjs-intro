@@ -23,12 +23,13 @@ export class UsersController {
 
   // Add a GET request handler for the "/users" endpoint
   @Get('/:id')
-  @ApiOperation({ 
-    summary: 'Fetches a list of users registered in application based on their ID.' 
+  @ApiOperation({
+    summary:
+      'Fetches a list of users registered in application based on their ID.',
   })
   @ApiResponse({
     status: 200,
-    description: 'The list of users has been successfully fetched.'
+    description: 'The list of users has been successfully fetched.',
   })
   @ApiQuery({
     name: 'limit',

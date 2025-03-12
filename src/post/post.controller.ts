@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Patch } from '@nestjs/common';
 import { PostServices } from './services/post.services';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserPostDto } from './dtos/create-user-post.dto';
+import { PatchPostDto } from './dtos/patch-post.dto';
 
 @Controller('post')
 @ApiTags('Post')
@@ -10,7 +11,8 @@ export class PostController {
 
   @Get('/:userId')
   @ApiOperation({
-    summary: 'Fetches a list of posts created by a specific user based on their ID.',
+    summary:
+      'Fetches a list of posts created by a specific user based on their ID.',
   })
   @ApiResponse({
     status: 200,
@@ -26,7 +28,7 @@ export class PostController {
   public getPosts(@Param('userId') userId: string) {
     return this.postServices.findAll(userId);
   }
-  
+
   @Post()
   @ApiOperation({
     summary: 'Creates a new post.',
@@ -38,5 +40,12 @@ export class PostController {
   public createPost(@Body() createUserPostDto: CreateUserPostDto) {
     return 'You just created a post via POST on "/post" endpoint';
   }
-}
 
+  @Patch()
+  @ApiOperation({
+    summary: 'Updates a post.',
+  })
+  public updatePost(@Body() patchPostDto: PatchPostDto) {
+    return 'You just updated a post via PATCH on "/post" endpoint';
+  }
+}

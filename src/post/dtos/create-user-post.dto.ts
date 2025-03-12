@@ -89,6 +89,21 @@ export class CreateUserPostDto {
     tags: string[];
 
     @ApiProperty({
+        type: 'array',
+        required: false,
+        items: {
+            type: 'object',
+            properties: {
+                key: { type: 'string',
+                    description: "The key can be any string that identifies the meta option",
+                    example: 'sidebarEnabled'
+                 },
+                value: { type: 'any',
+                    description: "The value can be any data type that represents the meta option",
+                    example: 'true'
+                 }
+            }
+        },
         description: 'The meta options of the post',
         example: '[{"key": "author", "value": "John Doe"}]'
     })

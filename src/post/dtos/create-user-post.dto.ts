@@ -32,6 +32,7 @@ export class CreateUserPostDto {
     description: 'Possible values: "post", "page", "story", "series"',
     example: 'series',
   })
+  @IsEnum(postType)
   @IsNotEmpty()
   @Transform(({ value }) => value.toLowerCase())
   postType: postType;

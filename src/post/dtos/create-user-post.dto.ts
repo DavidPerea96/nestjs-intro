@@ -10,6 +10,7 @@ import {
   Matches,
   MinLength,
   ValidateNested,
+  IsIn,
 } from 'class-validator';
 import { postType } from '../enums/postType.enum';
 import { postStatus } from '../enums/postStatus.enum';

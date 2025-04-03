@@ -45,6 +45,10 @@ export class PostController {
   @ApiOperation({
     summary: 'Updates a post.',
   })
+  @ApiResponse({
+    status: 200,
+    description: 'The post has been successfully updated.',
+  })
   public updatePost(@Body() patchPostDto: PatchPostDto) {
     return 'You just updated a post via PATCH on "/post" endpoint';
   }

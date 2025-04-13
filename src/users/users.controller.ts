@@ -67,12 +67,10 @@ export class UsersController {
   @Post()
   /**
    * Creates a new user.
-   * @param createUserDto - The data for creating a new user.
-   * @returns A message indicating that the user has been created.
+   * @param createUserDto - The data for creating the user.
    */
   public createUsers(@Body() createUserDto: CreateUserDto) {
-    console.log(createUserDto);
-    return 'You just created an user via POST on "/users" endpoint';
+    return this.usersService.createUser(createUserDto);
   }
 
   @Patch()
